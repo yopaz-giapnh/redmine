@@ -506,7 +506,7 @@ class Issue < ActiveRecord::Base
       names |= %w(project_id)
     end
     if dates_derived?
-      names -= %w(start_date due_date)
+      # names -= %w(start_date due_date)
     end
     if priority_derived?
       names -= %w(priority_id)
@@ -1689,8 +1689,8 @@ class Issue < ActiveRecord::Base
 
       if p.dates_derived?
         # start/due dates = lowest/highest dates of children
-        p.start_date = p.children.minimum(:start_date)
-        p.due_date = p.children.maximum(:due_date)
+        # p.start_date = p.children.minimum(:start_date)
+        # p.due_date = p.children.maximum(:due_date)
         if p.start_date && p.due_date && p.due_date < p.start_date
           p.start_date, p.due_date = p.due_date, p.start_date
         end
